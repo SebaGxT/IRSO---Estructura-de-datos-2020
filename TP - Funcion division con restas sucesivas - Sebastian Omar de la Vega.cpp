@@ -8,13 +8,19 @@ int divis_func(int n1, int n2){
 	int cont,res;
 	
 	cont=0;
-	res=n1;
+	res=abs(n1);
 	
-	while((res>=0)&&(res>=n2)){
+	while(res>=abs(n2)){
 			
-		res=res-n2;
+		res=res-abs(n2);
 		cont++;
 				
+	}
+	
+	if((n1<0)&&(n2>0)||(n1>0)&&(n2<0)){
+		
+		cont=cont*(-1);
+		
 	}
 	
 	return cont;
