@@ -62,20 +62,32 @@ int main(){
 	
 //Variables
 
-	int n1,res;
+	int n1,res,i;
+	
+	i=0;
 
 //Ingreso de datos
-
-	leer_nro_e("Ingrese un valor: ",n1);
+	do{
+		
+		leer_nro_e("\n\nIngrese un valor: ",n1);
 
 //Proceso
-	
-	res=div_devueltos_pos(n1);
+		
+		res=div_devueltos_pos(n1);
 
 //Salida de datos
-
-	printf("\n\nCantidad de divisores: %d",res);
-
+	
+		if(res!=-1){
+		
+			printf("\n\nCantidad de divisores: %d",res);
+		
+		}
+		
+		i++;
+		
+	}while(i<5);
+	
+	
 //Pausa y fin de programa
 
 	pausar();
