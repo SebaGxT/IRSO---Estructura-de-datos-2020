@@ -12,15 +12,16 @@ void pausar(){
 	
 }
 
-void leer_positivo(int &n){	
+void leer_positivo(char cade[30], int &n){	
 		
-	printf("\nIngrese un valor positivo: ");
+	printf("\n %s",cade);
 	scanf("%d",&n);
 	fflush(stdin);
 	
 	while(n<0){
 		
 		printf("\n\nPor favor ingrese un valor positivo.\n");
+		printf("\n %s",cade);
 		scanf("%d",&n);
 		fflush(stdin);
 		
@@ -81,7 +82,7 @@ int main(){
 	
 //Ingreso de datos
 	
-	leer_positivo(n1);
+	leer_positivo("Ingrese un valor positivo: ",n1);
 	
 
 //Salida de datos
