@@ -28,7 +28,7 @@ void captura_cadena(char cade[]){
 	
 }
 
-char let_fin(char cade[],char let){
+int let_fin(char cade[],char let){
 	
 	int cmp,leng;
 	
