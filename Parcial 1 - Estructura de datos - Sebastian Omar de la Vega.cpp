@@ -215,8 +215,9 @@ int main(){
 
 	imp_lisse(in);
 //Proceso
-/*	if(in!=NULL){
+	if(in!=NULL){
 		
+		printf("\n\n");
 		mostrarrecursivaimpar(in);
 		printf("\n\n");
 		eliminarsegundo(in);
@@ -230,7 +231,7 @@ int main(){
 		printf("\n\nLista Vacia\n\n");
 		
 	}
-	*/
+	
 //Pausa y fin de programa
 
 	pausar();
