@@ -29,21 +29,6 @@ void leer_nro_e(char cade[30],int &n){
 
 }
 
-void mostrar_pila(struct pila *pil){
-	
-	struct pila *p;
-	
-	p=pil;
-	
-	while(p!=NULL){
-		
-		printf("\n%d",p->num);
-		p=p->sig;
-		
-	}
-	
-}
-
 void crear_pila(struct pila *&pil){
 	
 	pil=NULL;
@@ -115,15 +100,24 @@ void sacar_pila(struct pila *&pil, int &n){
 
 void pasar_pila(struct pila *&pil, struct pila *&pil1){
 	
-	int n1;
+	int n;
+	bool valid;
 	
-	while(!pila_vacia(pil)){
+	valid=false;
+	
+	while(!pila_vacia(pil)&&valid==false){
 		
-		sacar_pila(pil,n1);
+		sacar_pila(pil,n);
 		
 		if(!pila_llena(pil1)){
 			
-			insertar_pila(pil1,n1);
+			insertar_pila(pil1,n);
+				
+		}else{
+			
+			valid=true;
+			insertar_pila(pil,n);
+			printf("\n\nNo se completo la transferencia, pila llena\n\n");
 			
 		}
 		
@@ -131,22 +125,44 @@ void pasar_pila(struct pila *&pil, struct pila *&pil1){
 	
 }
 
-int cant_pila(struct pila *pil,int n){
+void mostrar_pila(struct pila *pil){
 	
-	struct pila *p;
-	int cant;
+	struct pila *p, *aux;
+	int n;
 	
-	cant=0;
 	p=pil;
 	
-	while(p!=NULL){
+	crear_pila(aux);
+	
+	while(!pila_vacia(p)){
 		
-		if(p->num==n){
+		sacar_pila(p,n);
+		printf("\n%d",n);
+		insertar_pila(aux,n);
+		
+	}
+	
+}
+
+int cant_pila(struct pila *pil,int n){
+	
+	struct pila *p,*aux;
+	int cant,n1;
+	
+	p=pil;
+	cant=0;
+
+	while(!pila_vacia(p)){
+		
+		sacar_pila(p,n1);
+		
+		if(n==n1){
 			
 			cant++;
 			
-		}	
-		p=p->sig;
+		}
+		
+		insertar_pila(aux,n1);	
 		
 	}
 	
@@ -172,10 +188,13 @@ void sacar_par_pila(struct pila *&pil){
 	
 	struct pila*p;
 	int n;
+	bool valid;
+	
+	valid=false;
 	
 	crear_pila(p);
 	
-	while(!pila_vacia(pil)){
+	while(!pila_vacia(pil)&&valid==false){
 		
 		sacar_pila(pil,n);
 		
@@ -187,12 +206,49 @@ void sacar_par_pila(struct pila *&pil){
 				
 			}
 			
+		}else{
+			
+			//evita perdida de datos por desborde de pila auxiliar
+			insertar_pila(pil,n);
+			valid=true;
+			
 		}
 		
 	}
 	
 	pasar_pila(p,pil);
 	
+}
+
+void cargar_pila(struct pila *&pil){
+	
+	int n;
+	bool valid;
+	
+	valid=false;
+	
+	leer_nro_e("Ingrese un valor:",n);
+	
+	if(n!=0){
+		
+		while(n!=0&&valid==false){
+			
+			if(!pila_llena(pil)){
+			
+				insertar_pila(pil,n);
+				leer_nro_e("Ingrese un valor:",n);
+				
+			}else{
+				
+				printf("\n\nPila llena.\n\n");
+				valid=true;
+				
+			}
+					
+		};
+		
+	}
+
 }
 
 //Main
@@ -202,9 +258,6 @@ int main(){
 
 	struct pila *pila1,*pila2, *aux1, *aux2;
 	int n,cant;
-	bool valid;
-	
-	valid=false;
 
 //Ingreso de datos
 
@@ -219,69 +272,21 @@ int main(){
 		}	
 		
 	}while(MAXPILA<1);
-	
+
 	crear_pila(pila1);
 	crear_pila(pila2);
 	crear_pila(aux1);
 	crear_pila(aux2);
 	
 	printf("\n\nCarga de pila 1.\n\n");
-	leer_nro_e("Ingrese un valor:",n);
 	
-	if(n!=0){
-		
-		while(n!=0&&valid==false){
-			
-			if(!pila_llena(pila1)){
-			
-				insertar_pila(pila1,n);
-				leer_nro_e("Ingrese un valor:",n);
-				
-			}else{
-				
-				printf("\n\nPila llena.\n\n");
-				valid=true;
-				
-			}
-					
-		};
-		
-	}else{
-		
-		printf("\n\nPila vacia no se cargaron valores.\n");
-		
-	}
+	cargar_pila(pila1);
 	
-	valid=false;
-	printf("\n\nCarga de pila 2.\n\n");
-	leer_nro_e("Ingrese un valor:",n);
-	
-	if(n!=0){
-		
-		while(n!=0&&valid==false){
-			
-			if(!pila_llena(pila2)){
-			
-				insertar_pila(pila2,n);
-				leer_nro_e("Ingrese un valor:",n);
-				
-			}else{
-				
-				printf("\n\nPila llena.\n\n");
-				valid=true;
-				
-			}
-					
-		};
-		
-	}else{
-		
-		printf("\n\nPila vacia no se cargaron valores.\n");
-		
-	}
-	
-//Proceso
 
+	printf("\n\nCarga de pila 2.\n\n");
+	
+	cargar_pila(pila2);
+	
 	if(!pila_vacia(pila1)){
 		
 		printf("\n\nPila 1\n\n");
@@ -289,7 +294,7 @@ int main(){
 		
 	}else{
 		
-		printf("\n\nNo se puede mostrar pila 1, esta vacia.\n\n");
+		printf("\n\nPila vacia no se cargaron valores.\n");
 		
 	}
 		
@@ -300,10 +305,12 @@ int main(){
 		
 	}else{
 		
-		printf("\n\nNo se puede mostrar pila 2, esta vacia.\n\n");
+		printf("\n\nPila vacia no se cargaron valores.\n");
 		
 	}
-	
+
+//Proceso
+
 	if(!pila_vacia(pila1)){
 		
 		printf("\n\nIngrese un valor a buscar en pila 1, indicara cuantas veces esta.\n\n");
@@ -316,7 +323,7 @@ int main(){
 		printf("\n\nPila 1 vacia\n\n");
 		
 	}	
-	
+
 	printf("\n\nEliminar tope y base de la pila\n\n");
 	
 	//Eliminar tope
@@ -369,6 +376,7 @@ int main(){
 	}
 	
 	printf("\n\nTope y base eliminados\n\n");
+
 	if(!pila_vacia(pila1)){
 		
 		printf("\n\nPila 1\n\n");
@@ -400,7 +408,7 @@ int main(){
 		printf("\n\nPila 1 vacia\n\n");
 		
 	}
-	
+
 	if(!pila_vacia(pila2)){
 		
 		sacar_par_pila(pila2);
@@ -435,7 +443,7 @@ int main(){
 		printf("\n\nNo se puede mostrar pila 2, esta vacia.\n\n");
 		
 	}
-
+	
 //Pausa y fin de programa
 
 	pausar();
