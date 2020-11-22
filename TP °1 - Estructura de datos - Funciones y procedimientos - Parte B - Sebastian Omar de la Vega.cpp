@@ -59,7 +59,7 @@ bool par_impar(int n){
 	
 }
 
-//1) Un procedimiento que lea un entero positivo validado. Leer varios positivos y mostrar cuantos de ello fueran pares. Para ello hacer una funci髇 que  reciba un entero y devuelva 1  si el entero fuera par y 0 en caso contrario.
+//1) Un procedimiento que lea un entero positivo validado. Leer varios positivos y mostrar cuantos de ello fueran pares. Para ello hacer una funci贸n que  reciba un entero y devuelva 1  si el entero fuera par y 0 en caso contrario.
 
 void leer_positivo(int &n){	
 	
@@ -79,7 +79,7 @@ void leer_positivo(int &n){
 					
 }
 
-//2) Un procedimiento que lea un nro impar. Leer varios pares de enteros  impares y por cada par mostrar una leyenda aclaratoria dependiendo de cual fuera el mayor. Para ello hacer  una funci髇 que reciba dos enteros y devuelva el mayor de ambos. 
+//2) Un procedimiento que lea un nro impar. Leer varios pares de enteros  impares y por cada par mostrar una leyenda aclaratoria dependiendo de cual fuera el mayor. Para ello hacer  una funci贸n que reciba dos enteros y devuelva el mayor de ambos. 
 
 void leer_impar(int &n){
 	
@@ -93,13 +93,11 @@ void leer_impar(int &n){
 				
 			}
 			
-		}while(par_impar(n)==true
-		
-		);
+		}while(par_impar(n)==true);
 	
 }
 
-//3) Una funci髇 que reciba un entero positivo  y devuelva la cantidad divisores que tiene el mismo. Luego leer 5 enteros positivos y por cada uno  mostrar cuantos divisores tiene cada uno.
+//3) Una funci贸n que reciba un entero positivo  y devuelva la cantidad divisores que tiene el mismo. Luego leer 5 enteros positivos y por cada uno  mostrar cuantos divisores tiene cada uno.
 int div_devueltos_pos(int n){
 	
 	int i,cont,x;
@@ -171,7 +169,7 @@ int div_devueltos_posneg(int n){
 		
 }
 
-//5) Leer 5 enteros y por cada uno de ellos calcular su factorial. Usar una funci髇 que calcule el factorial.
+//5) Leer 5 enteros y por cada uno de ellos calcular su factorial. Usar una funci贸n que calcule el factorial.
 double factoriales(int n){
 	
 	int i; 
