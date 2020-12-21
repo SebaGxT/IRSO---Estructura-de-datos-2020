@@ -1,17 +1,16 @@
 //Librerias
 #include "Lib_io_seba.h"
 #include <time.h>
-#include <ctype.h>
 
 /*1) Definir una clase para manejar una alcancia. Tener en cuenta lo siguiente:
 
 "	La alcancia maneja monedas de 50centavos (0,50$), de 1$ y de 2$.
 "	Se puede insertar en  la alcancia cada una  de estas monedas. 
-"	La alcancia admite hasta 500 monedas en total ya que las tres monedas son mas o menos del mismo tamaño. Es decir, si quiero insertar  la moneda nro. 501 no puedo hacerlo.
+"	La alcancia admite hasta 500 monedas en total ya que las tres monedas son mas o menos del mismo tamaÃ±o. Es decir, si quiero insertar  la moneda nro. 501 no puedo hacerlo.
 "	Esta alcancia mediante una palanquita permite sacar una moneda. Pero devuelve una cualquiera, es decir, no puedo pedir por tipo de moneda.
 "	Tambien mediante una segunda palanquita permite vaciar su contenido, emitiendo cuantas monedas de cada tipo hay y el total en $ y centavos.
 
-¿Qué se puede hacer con la alcancia?
+Â¿QuÃ© se puede hacer con la alcancia?
 
 "	Inicializar la alcancia vacia.
 "	Insertar una moneda de 0,50$ o 1$ o 2$.
@@ -101,7 +100,6 @@ void opciones(){
 void alcancia::mostrar_info(void){
 	
 	int n;
-	char a;
 	bool valid;
 	
 	valid=false;
